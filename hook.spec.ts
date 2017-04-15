@@ -32,9 +32,11 @@ getTestBed().initTestEnvironment(
 })
 export class TestComponent {
   @Hook() ngOnDestroy$ = new EventEmitter<any>();
+  @Hook() ngOnDestroy2$: EventEmitter<any>;
   @Hook('ngOnInit') ngOnInit$ = new EventEmitter<any>();
 
   valueDestroy: number;
+  valueDestroy2: number;
   valueInit: number;
 
   constructor () {
@@ -53,6 +55,13 @@ export class TestComponent {
       .takeUntil(this.ngOnDestroy$)
       .subscribe((n) => {
         this.valueDestroy = n;
+      });
+
+    Observable
+      .timer(0, 1000)
+      .takeUntil(this.ngOnDestroy2$)
+      .subscribe((n) => {
+        this.valueDestroy2 = n;
       });
   }
 }
@@ -99,16 +108,19 @@ describe('Hook', () => {
 
     tick(3000);
     expect(comp.valueDestroy).toEqual(3);
+    expect(comp.valueDestroy2).toEqual(3);
 
 
     tick(1000);
     expect(comp.valueDestroy).toEqual(4);
+    expect(comp.valueDestroy2).toEqual(4);
 
     // Destroy the component, the observable should stop emitting
     fixture.destroy();
 
     tick(2000);
     expect(comp.valueDestroy).toEqual(4);
+    expect(comp.valueDestroy2).toEqual(4);
   }));
 
 });

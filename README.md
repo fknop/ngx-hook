@@ -25,7 +25,7 @@ $ yarn add ngx-hook
 Note: this example can actually be achieved with the async pipe. 
 
 ```typescript
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 
@@ -36,8 +36,10 @@ import { Hook } from 'ngx-hook';
   selector: 'counter',
   template: '{{ counter }}'
 })
-export class CounterComponent implements OnInit {
+export class CounterComponent implements OnInit, OnDestroy {
 
+  // You don't need to instantiate it yourself
+  // If you don't instantiate it, it will be instantiated before ngOnInit is called
   @Hook() ngOnDestroy$ = new EventEmitter<any>();
 
   counter: number = 0;
@@ -48,6 +50,9 @@ export class CounterComponent implements OnInit {
       .takeUntil(this.ngOnDestroy$)
       .subscribe((value) => { this.counter = value; });
   }
+
+  // For AOT you need to provide an empty method even if you don't use it, otherwise it will not get called by the framework.
+  ngOnDestroy () {}
 }
 ```
 
