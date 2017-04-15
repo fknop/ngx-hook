@@ -1,7 +1,7 @@
 {
   "name": "ngx-hook",
   "version": "1.0.0",
-  "description": "EventEmitter for lifecycle hooks",
+  "description": "Angular event emitter for lifecycle hooks",
   "main": "index.js",
   "scripts": {
     "karma": "node_modules/.bin/karma start karma.conf.js",

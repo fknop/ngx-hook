@@ -6,6 +6,20 @@ from observable streams in a functional way.
 
 This may be a temporary project as this (https://github.com/angular/angular/issues/13248) may solve it in the future.
 
+## Installation 
+
+### npm 
+
+```
+$ npm install ngx-hook --save
+```
+
+### yarn 
+
+```
+$ yarn add ngx-hook
+```
+
 ## Usage
 
 Note: this example can actually be achieved with the async pipe. 
