@@ -1,0 +1,36 @@
+{
+  "name": "ngx-hook",
+  "version": "1.0.0",
+  "description": "EventEmitter for lifecycle hooks",
+  "main": "index.js",
+  "scripts": {
+    "karma": "node_modules/.bin/karma start karma.conf.js",
+    "test": "npm run karma",
+    "tsc": "node_modules/.bin/tsc -p tsconfig.json",
+    "tsc:esm": "node_modules/.bin/tsc -p tsconfig.esm.json",
+    "prepublish": "npm run tsc && npm run tsc:esm",
+    "cover": "cat ./coverage/*/lcovonly | ./node_modules/.bin/coveralls"
+  },
+  "repository": "https://github.com/fknop/ngx-hook",
+  "author": "Florian Knop",
+  "license": "MIT",
+  "devDependencies": {
+    "@angular/common": "^4.0.2",
+    "@angular/compiler": "^4.0.2",
+    "@angular/core": "^4.0.2",
+    "@angular/platform-browser": "^4.0.2",
+    "@angular/platform-browser-dynamic": "^4.0.2",
+    "@types/jasmine": "^2.5.47",
+    "corejs": "^1.0.0",
+    "coveralls": "^2.13.0",
+    "jasmine": "^2.5.3",
+    "karma": "^1.6.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-spec-reporter": "^0.0.31",
+    "karma-typescript": "^3.0.0",
+    "rxjs": "^5.3.0",
+    "typescript": "^2.2.2",
+    "zone.js": "^0.8.5"
+  }
+}
