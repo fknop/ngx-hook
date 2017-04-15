@@ -51,4 +51,4 @@ export class CounterComponent implements OnInit {
 }
 ```
 
-You can hook to any lifecycle hook that you want. By default it will hook to `ngOnDestroy` as it's the more useful one.
+You can hook to any lifecycle hook that you want. By default it will hook to `ngOnDestroy` as it's the more useful one. Just pass the name of the hook in the `Hook` decorator like: `@Hook('ngOnChanges')`.
